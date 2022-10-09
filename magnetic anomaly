@@ -1,0 +1,27 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import math
+
+%matplotlib inline
+xp = np.linspace(-100,100,200)
+print(len(xp))
+N = len(xp)
+mag = np.zeros(N)
+
+# The paramaters
+amp = 1000
+z0 = 5
+x0 = 0
+theta = 30
+
+# The formula
+for i in range(N):
+    mag[i] = (amp*(xp[i]-x0)*math.sin(theta)+z0*math.cos(theta))/((xp[i]-x0)**2+z0**2)
+
+# Plotting the anomaly
+plt.plot(xp,mag)
+plt.title("Magnetic Anomaly Over A Dyke", fontweight='bold')
+plt.xlabel("Distance (km)")
+plt.ylabel("Gravity Anomaly (mGal)")
+plt.grid(linewidth=0.1)
+plt.show
